@@ -3,12 +3,17 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
+
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -21,6 +26,10 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
+        TextView alsoKnownAs = findViewById(R.id.also_known_tv);
+        TextView origin = findViewById(R.id.origin_tv);
+        TextView description= findViewById(R.id.description_tv);
+        TextView ingredients= findViewById(R.id.ingredients_tv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -50,6 +59,18 @@ public class DetailActivity extends AppCompatActivity {
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
+        List<String> mKnownAs=sandwich.getAlsoKnownAs();
+        alsoKnownAs.setText(TextUtils.join(", ",mKnownAs));
+        String mOrigin= sandwich.getPlaceOfOrigin();
+        origin.setText(mOrigin);
+
+        String mDescription= sandwich.getDescription();
+        description.setText(mDescription);
+
+        List<String> mIngredients= sandwich.getIngredients();
+        ingredients.setText("*");
+        ingredients.append(TextUtils.join("\n*",mIngredients));
+
     }
 
     private void closeOnError() {

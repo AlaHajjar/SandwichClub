@@ -38,6 +38,7 @@ public class JsonUtils {
                 Log.v(JsonUtils.class.toString(),"AlsoKnownas "+i+" :" +mAlsoKnownAs.get(i));
 
             }
+            
 
             String mPlace =mainObj.getString(PLACE_OF_ORIGIN);
             Log.v(JsonUtils.class.toString(),"Place of origin:" +mPlace);
