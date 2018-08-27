@@ -1,7 +1,9 @@
 package com.udacity.sandwichclub.utils;
 
+import android.content.res.Resources;
 import android.util.Log;
 
+import com.udacity.sandwichclub.R;
 import com.udacity.sandwichclub.model.Sandwich;
 
 import org.json.JSONArray;
@@ -11,6 +13,8 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.security.AccessController.getContext;
 
 public class JsonUtils {
 
@@ -36,9 +40,11 @@ public class JsonUtils {
             for (int i=0; i<JSONalsoKnownAs.length(); i++){
                 mAlsoKnownAs.add(JSONalsoKnownAs.getString(i));
                 Log.v(JsonUtils.class.toString(),"AlsoKnownas "+i+" :" +mAlsoKnownAs.get(i));
-
             }
-            
+
+
+
+
 
             String mPlace =mainObj.getString(PLACE_OF_ORIGIN);
             Log.v(JsonUtils.class.toString(),"Place of origin:" +mPlace);

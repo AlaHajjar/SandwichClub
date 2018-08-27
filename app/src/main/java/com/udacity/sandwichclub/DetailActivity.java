@@ -54,22 +54,49 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         populateUI();
+
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .error(R.mipmap.not_found)
                 .into(ingredientsIv);
+
 
         setTitle(sandwich.getMainName());
         List<String> mKnownAs=sandwich.getAlsoKnownAs();
-        alsoKnownAs.setText(TextUtils.join(", ",mKnownAs));
+        if(mKnownAs.size()!=0){
+            alsoKnownAs.setText(TextUtils.join(", ",mKnownAs));
+
+
+        }
+        else{
+            alsoKnownAs.setText(R.string.knownas_error_message);
+        }
+
         String mOrigin= sandwich.getPlaceOfOrigin();
-        origin.setText(mOrigin);
+        if(mOrigin.equals("")){
+            origin.setText(R.string.origin_error_message);
+        }
+        else{
+            origin.setText(mOrigin);
+        }
 
         String mDescription= sandwich.getDescription();
-        description.setText(mDescription);
+        if(mDescription.equals("")){
+            description.setText(R.string.detail_error_message);
+        }else{
+            description.setText(mDescription);
+        }
 
         List<String> mIngredients= sandwich.getIngredients();
-        ingredients.setText("*");
-        ingredients.append(TextUtils.join("\n*",mIngredients));
+        if(mIngredients.size()!=0){
+            ingredients.setText("*");
+            ingredients.append(TextUtils.join("\n*",mIngredients));
+
+        }
+        else{
+            alsoKnownAs.setText(R.string.detail_error_message);
+        }
+
 
     }
 

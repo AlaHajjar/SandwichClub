@@ -12,6 +12,8 @@
 
     <!-- Error messages-->
     <string name="detail_error_message">Sandwich data not available</string>
+    <string name="knownas_error_message">-Sandwich aliases not registered-</string>
+    <string name="origin_error_message">-Unknown-</string>
 
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>
